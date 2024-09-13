@@ -1,0 +1,77 @@
+name: CI/CD Pipeline for Android and iOS
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # Job for Android Analysis on Linux (Ubuntu)
+  android-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install Android Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          # Install additional tools if needed (e.g., APKTool, JADX)
+          sudo apt-get update
+          sudo apt-get install -y apktool
+
+      - name: Run Static Analysis (Android)
+        run: |
+          # Run static analysis on an Android APK
+          python static_analysis/feature_extraction.py path/to/sample.apk
+
+      - name: Run Tests
+        run: |
+          # Run Django or other Python tests
+          python manage.py test
+
+      - name: Run Dynamic Analysis (Android)
+        run: |
+          # Run dynamic analysis script if necessary
+          python dynamic_analysis.py path/to/sample.apk
+
+  # Job for iOS Analysis on macOS
+  ios-analysis:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+
+      - name: Install iOS Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          # Example: Install JTool for iOS analysis
+          brew install jtool  # Ensure JTool is available via Homebrew or similar
+
+      - name: Run Static Analysis (iOS)
+        run: |
+          # Example command for running static analysis on iOS binaries
+          # Replace with actual paths and commands specific to your iOS analysis tool
+          jtool --analyze path/to/sample.ipa
+
+      - name: Run iOS Specific Tests
+        run: |
+          # Add any iOS-specific tests here if applicable
+          echo "Running iOS-specific tests..."
