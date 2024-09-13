@@ -10,10 +10,6 @@ Finally, the analysis results are stored in a PostgreSQL database and presented 
 
 [Channels and Revenue Systems]
 
-"Our framework is accessible through multiple channels, including direct B2B sales, partnerships with cybersecurity firms, and online marketing. By integrating our solution into popular app development platforms, we reach developers directly at the point of need.
-
-Our revenue model is versatile and includes subscription-based licensing, modular plugin sales, and custom implementations for businesses with specific security needs. Additionally, we offer a freemium model where users can access a basic version with the option to upgrade to premium features. For larger enterprises, we provide a white-label solution, allowing companies to rebrand and resell our framework as part of their product suite."
-
 [Real-World Impact and Closing]
 
 "Whether you're a startup, cybersecurity firm, or app developer, our framework ensures your Android applications meet the highest security standards. By identifying vulnerabilities early and providing clear, actionable insights, we empower you to build safer, more reliable apps. Explore our solution today and take the next step toward securing your applications."
